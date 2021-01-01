@@ -1,4 +1,8 @@
 const { app, BrowserWindow } = require('electron')
+require('electron-reload')(__dirname, {
+    electron: require(`${__dirname}/node_modules/electron`)
+});
+
 
 function createWindow() {
     const win = new BrowserWindow({
@@ -9,7 +13,9 @@ function createWindow() {
         }
     })
 
-    win.loadFile('index.html')
+    //win.removeMenu()
+    win.setResizable(false)
+    win.loadFile('./app/index.html')
 }
 
 app.whenReady().then(createWindow)
