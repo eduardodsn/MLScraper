@@ -17,11 +17,27 @@
             </label>
             <div id="search_bar">
                 <input type="text" name="product_input" id="product_input_text" placeholder="Digite o nome de um produto...">
-                <button onclick="">
+                <button id="search_button">
                     <img src="./css/media/lupa.png" alt="Pesquisar">
                 </button>
             </div>
         </div>
     </div>
-    </body>
+    <div id="cards_container">
+        
+    </div>
+
+
+    <script>
+        const electron = require('electron');
+        const { ipcRenderer } = electron;
+
+        let cards_container = document.getElementById('cards_container');
+
+        ipcRenderer.on('cards_container:add', (e, container) => {
+            cards_container = container;
+        });
+    </script>
+    <script src="./js/index.js"></script>
+</body>
 </html>
