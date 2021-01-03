@@ -10,10 +10,12 @@ require('electron-reload')(__dirname, {
 // Set ENV <--
 // process.env.NODE_ENV = 'production'
 
+let mainWindow;
+
 app.on('ready', () => {
     mainWindow = new BrowserWindow({
         webPreferences: {
-            nodeIntegration: true,
+            nodeIntegration: false
         }
     });
 
@@ -52,18 +54,13 @@ const mainMenuTemplate = [
     }
 ]
 
-// catch cards_container
-ipcMain.on('cards_container', (e, container) => {
-    mainWindow.webContents.send('cards_container:add', container);
-})
-
 // If mac, add empty object to menu
-if(process.platform == 'darwin') {
+if (process.platform == 'darwin') {
     mainMenuTemplate.unshift({});
 }
 
 // Add developer tools item if not in production
-if(process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production') {
     mainMenuTemplate.push({
         label: 'Developer Tools',
         submenu: [

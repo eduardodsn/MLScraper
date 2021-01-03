@@ -10,7 +10,7 @@
   "author": "eduardodsn",
   "license": "ISC",
   "dependencies": {
-    "electron": "^11.1.1",
+    "electron": "^9.0.5",
     "electron-reload": "^1.5.0",
     "osmosis": "^1.1.10"
   }

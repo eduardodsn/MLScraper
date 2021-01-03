@@ -28,16 +28,7 @@
     </div>
 
 
-    <script>
-        const electron = require('electron');
-        const { ipcRenderer } = electron;
-
-        let cards_container = document.getElementById('cards_container');
-
-        ipcRenderer.on('cards_container:add', (e, container) => {
-            cards_container = container;
-        });
-    </script>
+    
     <script src="./js/index.js"></script>
 </body>
 </html>
