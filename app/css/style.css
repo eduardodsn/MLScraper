@@ -75,6 +75,11 @@ div.product_input {
     font-size: 15px;
 }
 
+.card img {
+    width: 15%;
+    height: 15%;
+}
+
 #search_bar button:hover {
     cursor: pointer;
 }
