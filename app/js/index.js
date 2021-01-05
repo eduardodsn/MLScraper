@@ -10,17 +10,17 @@ search_button.addEventListener('click', getMlData);
 
 function getMlData() {
     console.log('hello boya')
-    // let product_name = product_input_text.value;
-    // osmosis
-    // .get(`https://lista.mercadolivre.com.br/${product_name}`)
-    // .find('div.ui-search-result__wrapper')
-    // .set({
-    //     title: 'h2.ui-search-item__title.ui-search-item__group__element',
-    //     img: 'img.ui-search-result-image__element@src'
-    // })
-    // .data(data => {
-    //     appendNewCard(data);
-    // });
+    let product_name = 'acer';//product_input_text.value;
+    osmosis
+    .get(`https://lista.mercadolivre.com.br/${product_name}`)
+    .find('div.ui-search-result__wrapper')
+    .set({
+        title: 'h2.ui-search-item__title.ui-search-item__group__element',
+        img: 'img.ui-search-result-image__element@src'
+    })
+    .data(data => {
+        console.log(data);
+    });
 }
 
 // function appendNewCard(data) {

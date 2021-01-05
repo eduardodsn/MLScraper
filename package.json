@@ -13,5 +13,8 @@
     "electron": "^9.0.5",
     "electron-reload": "^1.5.0",
     "osmosis": "^1.1.10"
+  },
+  "devDependencies": {
+    "electron-rebuild": "^2.3.4"
   }
 }
