@@ -1,19 +1,22 @@
 const osmosis = require('osmosis');
 
 
-let search_button = document.getElementById('search_button');
-let product_input_text = document.getElementById('product_input_text');
+let searchButton = document.getElementById('search_button');
+let productInputText = document.getElementById('product_input_text');
 let container = document.getElementById('cards_container');
 
-search_button.addEventListener('click', getMlData);
+searchButton.addEventListener('click', getMlData);
+document.addEventListener ('keypress', (event) => {
+    event.key == 'Enter' ? getMlData : null;
+});
 
 
 function getMlData() {
     container.innerHTML = "";
-    let product_name = "teclado mecânico" //product_input_text.value;
+    let productName = formatProductName(productInputText.value);
 
     osmosis
-    .get(`https://lista.mercadolivre.com.br/${product_name}`)
+    .get(`https://lista.mercadolivre.com.br/${productName}`)
     .find('div.ui-search-result__wrapper')
     .set({
         img: 'img.ui-search-result-image__element@src',
@@ -22,7 +25,7 @@ function getMlData() {
         priceCents: 'span.price-tag-cents'
     })
     .data(data => {
-        console.log(data);
+        appendNewCard(data);
     });
 }
 
@@ -36,3 +39,18 @@ function appendNewCard(data) {
                     `
     container.appendChild(div)
 }
+
+function formatProductName(str) {
+    var accents    = 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž _';
+    var accentsOut = "AAAAAAaaaaaaOOOOOOOooooooEEEEeeeeeCcDIIIIiiiiUUUUuuuuNnSsYyyZz--";
+    str = str.split('');
+    var strLen = str.length;
+    var i, x;
+    for (i = 0; i < strLen; i++) {
+      if ((x = accents.indexOf(str[i])) != -1) {
+        str[i] = accentsOut[x];
+      }
+    }
+
+    return str.join('');
+  }
