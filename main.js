@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu, ipcMain } = require('electron');
+const { app, BrowserWindow, Menu } = require('electron');
 const url = require('url');
 const path = require('path');
 
@@ -49,6 +49,10 @@ const mainMenuTemplate = [
                 click() {
                     app.quit();
                 }
+            },
+            {
+                label: 'Recarregar',
+                role: 'reload'
             }
         ]
     }
@@ -72,6 +76,7 @@ if (process.env.NODE_ENV !== 'production') {
                 }
             },
             {
+                label: 'Recarregar',
                 role: 'reload'
             }
         ]
