@@ -8,7 +8,7 @@ require('electron-reload')(__dirname, {
 });
 
 // Set ENV <--
-// process.env.NODE_ENV = 'production'
+process.env.NODE_ENV = 'production'
 
 let mainWindow;
 
@@ -36,6 +36,9 @@ app.on('ready', () => {
 
     // insert menu
     Menu.setApplicationMenu(mainMenu);
+
+    // resizable off
+    mainWindow.setResizable(false);
 })
 
 //Create menu template
@@ -44,15 +47,15 @@ const mainMenuTemplate = [
         label: 'Inicio',
         submenu: [
             {
+                label: 'Recarregar',
+                role: 'reload'
+            },
+            {
                 label: 'Sair',
                 accelerator: process.platform == 'darwin' ? 'Command+Q' : 'Ctrl+Q',
                 click() {
                     app.quit();
                 }
-            },
-            {
-                label: 'Recarregar',
-                role: 'reload'
             }
         ]
     }
